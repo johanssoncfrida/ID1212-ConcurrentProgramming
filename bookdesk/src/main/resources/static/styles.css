@@ -1,0 +1,83 @@
+.desk li {
+    list-style: none;
+    margin: 1em 0;
+    padding: 20px 10px;
+    background: beige;
+    border: solid;
+    width: 600px;
+    position: relative;
+}
+.header{
+    margin-top: 20px;
+}
+.submitbutton{
+    margin-top: 15px;
+    background: black;
+    color: beige;
+    padding: 5px 10px 5px 10px;
+}
+.submitbutton:hover{
+    margin-top: 15px;
+    background: black;
+    color: grey;
+    padding: 5px 10px 5px 10px;
+}
+
+.submitbutton:disabled{
+    background: grey;
+    color: beige;
+    border: 1px solid black;
+}
+
+.container{
+    font-family: "Cambria Math";
+}
+
+.infotext{
+    width: 600px;
+}
+
+.authbox{
+    list-style: none;
+    margin: 1em 0;
+    padding: 20px 10px;
+    background: beige;
+    border: solid;
+    width: 400px;
+    position: relative;
+}
+
+linktosignup:visited, linktosignup:link{
+    color: black;
+}
+
+ .linktosignup:hover{
+    color: gray;
+}
+
+.nameField{
+    display:inline-block;
+    width:80px;
+    text-align: right;
+    padding: 5px 5px 0 0;
+    margin:0 0 7px 0;
+}
+
+.inputField {
+    display: inline-block;
+    width: 160px;
+    margin: 0 0 7px 20px;
+}
+
+.errormessage{
+    color: red;
+}
+
+.sideBySideForm{
+    display: inline-block;
+}
+
+.floatbutton{
+    margin-left: 90px;
+    margin-top: -45px;
+}

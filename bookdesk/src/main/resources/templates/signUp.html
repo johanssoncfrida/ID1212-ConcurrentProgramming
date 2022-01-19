@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<head>
+  <link rel="stylesheet" type="text/css" th:href="@{/styles.css}"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>SignUp</title>
+</head>
+<body th:class="container">
+<h1 th:class="header">Sign up to BookDesk </h1>
+<div th:if="${userError}"><span th:class="errormessage" th:text="${userError}"></span></div>
+<div th:class="authbox">
+  <form method ="POST" action="adduser">
+    <div th:class="nameField">First name</div><div th:class="inputField"><input th:class="inputField" th:type="text" name="firstname"></div><br>
+    <div th:class="nameField">Last name</div><div th:class="inputField"><input th:class="inputField" th:type="text" th:name="lastname"></div><br>
+    <div th:class="nameField">Date of birth</div><div th:class="inputField"><input th:class="inputField" th:type="date" th:name="id"></div><br>
+    <div th:class="nameField">Mobile</div><div th:class="inputField"><input th:class="inputField" th:type="text" th:name="mobile"></div><br>
+    <div th:class="nameField">Email</div><div th:class="inputField"><input th:class="inputField" th:type="text" th:name="email"></div><br>
+    <div th:class="nameField">Username</div><div th:class="inputField"><input th:class="inputField" th:type="text" th:name="username"></div><br>
+    <div th:class="nameField">Password</div><div th:class="inputField"><input th:class="inputField" th:type="password" th:name="password"></div><br>
+    <input th:type="hidden" th:name="action" th:value="signUp">
+    <input th:class="submitbutton" th:type="submit" value="Sign up">
+  </form>
+  <form th:class="floatbutton" method="GET" action="/">
+    <button th:class="submitbutton" >Back</button>
+  </form>
+</div>
+</body>
+</html>

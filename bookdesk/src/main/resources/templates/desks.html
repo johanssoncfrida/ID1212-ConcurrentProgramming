@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd" >
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Desk Booking</title>
+</head>
+<body th:class="container">
+<h1 th:class="header">DeskBook booking page</h1>
+<form th:class="sideBySideForm"  method="POST" action="chooseday">
+    <div th:class="nameField">Day</div><div th:class="inputField"><input th:type="date" th:name="chooseday" th:value="${pickeddate}" th:max="${maxBookingDate}"></div>
+    <input th:type="hidden" name="action" value="signIn">
+    <input th:class="submitbutton" th:type="submit" value="Choose day">
+    <input th:class="submitbutton" th:type="submit" th:name="getBookingInfo" value="Get Booking Info">
+</form>
+<form th:class="sideBySideForm" method="GET" action="/">
+    <button th:class="submitbutton" >Sign Out</button>
+</form>
+<div th:if="${errBooker}"><span th:class="errormessage" th:text="${errBooker}"></span></div>
+<div th:if="${logs}">
+    <span th:text="${logsize}"></span>
+    <div th:if="${bookersDesk}">
+        <span th:text="'Your next booking: ' + ${bookersDesk.getStart()}"></span>
+        <span th:text="'Desk : ' + ${bookersDesk.deskId}"></span>
+    </div>
+    <div th:unless="${bookersDesk}">
+        <span>Your don't have any bookings.</span>
+    </div>
+</div>
+<ul th:class="desk"  th:each="desk : ${desks}">
+    <li>
+    <form method="POST" action="bookdesk">
+        <h2 th:text="'Desk ' + ${desk.deskId}"></h2>
+        <p th:text="${desk.booked} ? 'Booked' : 'Not Booked'"></p>
+        <p th:text="${desk.startTime} ? 'Start time: ' +  ${desk.getStart()} : ''" ></p>
+        <p th:text="${desk.endTime} ? 'End time: ' + ${desk.getEnd()} : ''" ></p>
+
+                <th:block th:switch="${desk.booked}">
+                <div th:case="0">
+                    <div>
+                        <div th:class="nameField">Date</div><div th:class="inputField"><input th:type="date" th:name="date" th:value="${pickeddate}" /></div><br>
+                        <div th:class="nameField">Company</div><div th:class="inputField"><input th:type="text" th:name="company" required></div><br>
+                        <div th:class="nameField">Start time</div><div th:class="inputField"><input th:type="time" id="starttime" th:name="starttime" min="08:00" max="20:00" required></div><br>
+                        <div th:class="nameField">End time</div><div th:class="inputField"><input th:type="time" id="endtime" th:name="endtime" min="08:00" max="20:00" required></div><br>
+                        <button th:class="submitbutton" th:name="deskid" th:value="${desk.deskId}">Click to book</button>
+                    </div>
+                </div>
+                <div th:case="1">
+                    <div>
+                        <button th:class="submitbutton" th:name="button" th:value="${desk.deskId}" disabled >Click to book</button>
+                        <div th:if="${booker}">
+                            <div th:if="${booker.deskId}==${desk.pk}">
+                                <button th:class="submitbutton" th:name="canceldeskid" th:value="${desk.pk}">Cancel booking</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div th:case="*"></div>
+                </th:block>
+
+    </form>
+
+    </li>
+</ul>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

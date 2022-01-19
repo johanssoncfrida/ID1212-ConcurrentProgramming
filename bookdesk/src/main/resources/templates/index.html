@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DeskBook</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body th:class="container">
+<h1 th:class="header">Welcome to BookDesk </h1>
+<div th:if="${errorParse}"><span th:class="errormessage" th:text="${errorParse}"></span></div>
+<div th:class="infotext" th:text="${info}"></div>
+<div th:class="authbox">
+    <form method ="POST" action="signIn" >
+        <div th:class="nameField">Username</div><div th:class="inputField"><input th:type="text" th:name="username"></div><br>
+        <div th:class="nameField">Email</div><div th:class="inputField"><input th:type="text" th:name="email"></div><br>
+        <div th:class="nameField">Password</div><div th:class="inputField"><input th:type="password" th:name="password"></div><br>
+        <input type="hidden" name="action" value="signIn">
+        <input th:class="submitbutton" th:type="submit" value="Sign In">
+        <br/>
+    </form>
+</div>
+<form method ="GET" action="signUp">
+    <a th:class="linktosignup" style="color: black" href="signUp">No account? Sign up!</a>
+</form>
+</body>
+</html>
