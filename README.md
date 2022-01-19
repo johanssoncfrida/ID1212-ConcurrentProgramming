@@ -8,12 +8,12 @@ To pass, your project must be accepted and you will get one (1) extra point for 
 * Docker
 * Other design pattern / framework / technology of your suggestion
 
-##Project
+## Project
 
 The idea behind this project was to implement a service where people can sign up and book a desk for their work.
 The service has 10 desks available for booking. 
 
-###Frameworks and dependencies
+### Frameworks and dependencies
 This project was implemented with Spring.io and made use of:
 - Java Persistence Architecture,JPA, and hibernate.
 - Thymeleaf
